@@ -16,7 +16,11 @@ module.exports = {
       "9xl": "9rem",
       "10xl": "10rem",
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Work Sans', 'Helvetica', 'Arial', 'sans-serif'],
+      }
+    },
   },
   variants: {},
   plugins: [],

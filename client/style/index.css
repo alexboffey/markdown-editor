@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,7 +27,8 @@ h6 {
   @apply font-semibold;
   @apply leading-relaxed;
   @apply tracking-wide;
-  @apply mb-2;
+  @apply mt-2;
+  @apply mb-1;
 }
 
 h1 {
@@ -58,7 +61,7 @@ hr {
 }
 
 a {
-  @apply text-teal-400;
+  @apply text-blue-400;
 }
 
 ul {
@@ -66,13 +69,50 @@ ul {
   @apply list-inside;
 }
 
+p {
+  @apply mb-2;
+}
+
+pre {
+  @apply bg-blue-100;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply shadow-inner;
+}
+
+code {
+  @apply text-sm;
+}
+
+blockquote {
+  @apply bg-blue-100;
+  @apply border-blue-200;
+  @apply border-l-8;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply mb-2;
+}
+
+blockquote * {
+  @apply m-0;
+}
+
 /* Components */
+
+.main {
+  @apply flex;
+  @apply flex-1;
+  height: calc(100% - 45px);
+}
 
 .editor {
   @apply font-mono;
   @apply w-5/12;
   @apply p-4;
   @apply text-sm;
+  @apply resize-none;
 }
 
 .preview {

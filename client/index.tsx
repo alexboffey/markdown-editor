@@ -1,16 +1,15 @@
 import "./style/index.css";
 
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 // @ts-ignore
 import { render } from "../crate/src/lib.rs";
 import { defaultMarkdown } from "./assets";
 
-
 /**
  * TODOS
- * 
+ *
  * localStorage
  * good editor component
  */
@@ -18,19 +17,18 @@ import { defaultMarkdown } from "./assets";
 const Root: React.FC<{}> = () => {
   const [html, setHtml] = useState<string>(render(defaultMarkdown));
 
-  const handleOnChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setHtml(render(e.target.value));
-    },
-    []
-  );
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setHtml(render(e.target.value));
+  };
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <header className="bg-teal-900 py-2 px-4 shadow z-10">
-        <h1 className="text-white tracking-widest text-lg m-0">Markdown Editor</h1>
+      <header className="bg-blue-900 py-2 px-4 shadow-lg z-10">
+        <h1 className="text-white tracking-widest text-lg m-0">
+          Markdown Editor
+        </h1>
       </header>
-      <main className="flex h-full">
+      <main className="main">
         <textarea
           className="editor"
           defaultValue={defaultMarkdown}
