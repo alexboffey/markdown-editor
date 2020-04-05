@@ -1,3 +1,5 @@
+import "./style/index.css";
+
 import React, { useState, useCallback } from "react";
 import ReactDOM from "react-dom";
 
@@ -16,15 +18,19 @@ const Root: React.FC<{}> = () => {
   );
 
   return (
-    <>
-      <textarea
-        defaultValue={defaultMarkdown}
-        style={{ width: "100%" }}
-        rows={4}
-        onChange={handleOnChange}
-      />
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </>
+    <div className="flex flex-col h-full overflow-hidden">
+      <header className="bg-teal-900 py-2 px-4 shadow z-10">
+        <h1 className="text-white tracking-widest text-lg m-0">Markdown Editor</h1>
+      </header>
+      <main className="flex h-full">
+        <textarea
+          className="editor"
+          defaultValue={defaultMarkdown}
+          onChange={handleOnChange}
+        />
+        <div className="preview" dangerouslySetInnerHTML={{ __html: html }} />
+      </main>
+    </div>
   );
 };
 
