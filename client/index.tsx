@@ -7,6 +7,14 @@ import ReactDOM from "react-dom";
 import { render } from "../crate/src/lib.rs";
 import { defaultMarkdown } from "./assets";
 
+
+/**
+ * TODOS
+ * 
+ * localStorage
+ * good editor component
+ */
+
 const Root: React.FC<{}> = () => {
   const [html, setHtml] = useState<string>(render(defaultMarkdown));
 
