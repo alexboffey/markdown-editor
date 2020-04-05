@@ -79,6 +79,7 @@ pre {
   @apply px-4;
   @apply rounded;
   @apply shadow-inner;
+  @apply mb-2;
 }
 
 code {
@@ -93,6 +94,7 @@ blockquote {
   @apply px-4;
   @apply rounded;
   @apply mb-2;
+  @apply shadow-sm;
 }
 
 blockquote * {

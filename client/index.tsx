@@ -10,15 +10,28 @@ import { defaultMarkdown } from "./assets";
 /**
  * TODOS
  *
- * localStorage
  * good editor component
  */
 
+const getDefaultValue = () => {
+  const cache = localStorage.getItem("cached-markdown");
+
+  if (cache !== null) {
+    return cache;
+  }
+
+  return defaultMarkdown;
+};
+
 const Root: React.FC<{}> = () => {
-  const [html, setHtml] = useState<string>(render(defaultMarkdown));
+  const defaultValue = getDefaultValue();
+
+  const [html, setHtml] = useState<string>(render(defaultValue));
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setHtml(render(e.target.value));
+
+    localStorage.setItem("cached-markdown", e.target.value);
   };
 
   return (
@@ -31,7 +44,7 @@ const Root: React.FC<{}> = () => {
       <main className="main">
         <textarea
           className="editor"
-          defaultValue={defaultMarkdown}
+          defaultValue={defaultValue}
           onChange={handleOnChange}
         />
         <div className="preview" dangerouslySetInnerHTML={{ __html: html }} />
