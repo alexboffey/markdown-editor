@@ -3,19 +3,9 @@ extern crate cfg_if;
 
 extern crate wasm_bindgen;
 extern crate web_sys;
+extern crate pulldown_cmark;
 use wasm_bindgen::prelude::*;
-
-cfg_if! {
-    // When the `console_error_panic_hook` feature is enabled, we can call the
-    // `set_panic_hook` function to get better error messages if we ever panic.
-    if #[cfg(feature = "console_error_panic_hook")] {
-        extern crate console_error_panic_hook;
-        use console_error_panic_hook::set_once as set_panic_hook;
-    } else {
-        #[inline]
-        fn set_panic_hook() {}
-    }
-}
+use pulldown_cmark::{html, Options, Parser};
 
 cfg_if! {
     // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -29,6 +19,13 @@ cfg_if! {
 
 // Called by our JS entry point to run the example
 #[wasm_bindgen]
-pub fn run() -> String {
-    String::from("hey from wasm")
+pub fn render(markdown: &str) -> String {
+    let options = Options::empty();
+    let parser = Parser::new_ext(markdown, options);
+
+    // Write to String buffer.
+    let mut html = String::new();
+    html::push_html(&mut html, parser);
+
+    html
 }
